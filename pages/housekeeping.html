@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Housekeeping | Azure Horizon Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f172a',
+                        secondary: '#cca43b',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-gray-100 font-sans text-slate-800">
+
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-primary text-slate-300 flex-shrink-0 hidden md:flex flex-col transition-all duration-300">
+            <div class="h-16 flex items-center justify-center border-b border-white/10">
+                <a href="../index.html" class="text-xl font-serif font-bold text-white tracking-wide">Azure Admin</a>
+            </div>
+            <nav class="flex-1 overflow-y-auto py-6 space-y-1">
+                <a href="dashboard.html"
+                    class="flex items-center px-6 py-3 hover:bg-white/5 hover:text-white transition">
+                    <i class="fas fa-chart-line w-6"></i>
+                    <span class="font-medium">Dashboard</span>
+                </a>
+                <a href="reservations.html"
+                    class="flex items-center px-6 py-3 hover:bg-white/5 hover:text-white transition">
+                    <i class="fas fa-calendar-check w-6"></i>
+                    <span class="font-medium">Reservations</span>
+                </a>
+                <a href="room-management.html"
+                    class="flex items-center px-6 py-3 hover:bg-white/5 hover:text-white transition">
+                    <i class="fas fa-bed w-6"></i>
+                    <span class="font-medium">Rooms</span>
+                </a>
+                <a href="housekeeping.html"
+                    class="flex items-center px-6 py-3 bg-secondary/10 text-secondary border-r-4 border-secondary transition">
+                    <i class="fas fa-broom w-6"></i>
+                    <span class="font-medium">Housekeeping</span>
+                </a>
+                <!-- Other links -->
+            </nav>
+        </aside>
+
+        <!-- Main -->
+        <main class="flex-1 flex flex-col h-screen overflow-hidden">
+            <header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6 z-10">
+                <div class="flex items-center gap-4">
+                    <button class="md:hidden text-gray-500 hover:text-primary"><i
+                            class="fas fa-bars text-xl"></i></button>
+                    <h1 class="text-xl font-bold text-slate-800">Housekeeping Tasks</h1>
+                </div>
+                <button
+                    class="bg-primary hover:bg-slate-800 text-white px-4 py-2 rounded-lg text-sm font-medium transition shadow-sm">
+                    <i class="fas fa-plus mr-2"></i> Assign Task
+                </button>
+            </header>
+
+            <div class="flex-1 overflow-y-auto p-6 bg-slate-50">
+
+                <!-- Filters -->
+                <div class="flex gap-4 mb-6 overflow-x-auto">
+                    <button
+                        class="bg-white border border-slate-200 px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 shadow-sm flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-slate-400"></div> All Tasks (12)
+                    </button>
+                    <button
+                        class="bg-white border border-slate-200 px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 shadow-sm flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-red-500"></div> High Priority (3)
+                    </button>
+                    <button
+                        class="bg-white border border-slate-200 px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 shadow-sm flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-yellow-500"></div> Cleaning (5)
+                    </button>
+                    <button
+                        class="bg-white border border-slate-200 px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 shadow-sm flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-green-500"></div> Inspection (4)
+                    </button>
+                </div>
+
+                <!-- Housekeeping Staff Status -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <!-- Staff Card -->
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex items-center gap-4">
+                        <img src="https://ui-avatars.com/api/?name=Maria+G&background=random"
+                            class="w-12 h-12 rounded-full">
+                        <div>
+                            <h4 class="font-bold text-slate-800">Maria G.</h4>
+                            <p class="text-xs text-green-600 bg-green-50 px-2 py-0.5 rounded-full inline-block mt-1">
+                                Available</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex items-center gap-4">
+                        <img src="https://ui-avatars.com/api/?name=John+D&background=random"
+                            class="w-12 h-12 rounded-full">
+                        <div>
+                            <h4 class="font-bold text-slate-800">John D.</h4>
+                            <p class="text-xs text-yellow-600 bg-yellow-50 px-2 py-0.5 rounded-full inline-block mt-1">
+                                Cleaning Room 102</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task List -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 text-xs uppercase font-semibold">
+                                <th class="p-4">Room</th>
+                                <th class="p-4">Task</th>
+                                <th class="p-4">Assigned To</th>
+                                <th class="p-4">Priority</th>
+                                <th class="p-4">Status</th>
+                                <th class="p-4 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-sm">
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="p-4 font-bold text-primary">102 - Standard</td>
+                                <td class="p-4">Full Clean (Checkout)</td>
+                                <td class="p-4 flex items-center gap-2"><img
+                                        src="https://ui-avatars.com/api/?name=John+D&background=random"
+                                        class="w-6 h-6 rounded-full"> John D.</td>
+                                <td class="p-4"><span
+                                        class="bg-red-100 text-red-700 px-2 py-1 rounded text-xs font-bold">High</span>
+                                </td>
+                                <td class="p-4"><span
+                                        class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-xs font-bold">In
+                                        Progress</span></td>
+                                <td class="p-4 text-right"><button class="text-slate-400 hover:text-primary"><i
+                                            class="fas fa-ellipsis-h"></i></button></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="p-4 font-bold text-primary">204 - Suite</td>
+                                <td class="p-4">Restock Minibar</td>
+                                <td class="p-4 flex items-center gap-2"><img
+                                        src="https://ui-avatars.com/api/?name=Maria+G&background=random"
+                                        class="w-6 h-6 rounded-full"> Maria G.</td>
+                                <td class="p-4"><span
+                                        class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-bold">Normal</span>
+                                </td>
+                                <td class="p-4"><span
+                                        class="bg-slate-100 text-slate-600 px-2 py-1 rounded text-xs font-bold">Pending</span>
+                                </td>
+                                <td class="p-4 text-right"><button class="text-slate-400 hover:text-primary"><i
+                                            class="fas fa-ellipsis-h"></i></button></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="p-4 font-bold text-primary">305 - Deluxe</td>
+                                <td class="p-4">Deep Clean</td>
+                                <td class="p-4 text-slate-400 italic">Unassigned</td>
+                                <td class="p-4"><span
+                                        class="bg-red-100 text-red-700 px-2 py-1 rounded text-xs font-bold">High</span>
+                                </td>
+                                <td class="p-4"><span
+                                        class="bg-slate-100 text-slate-600 px-2 py-1 rounded text-xs font-bold">Pending</span>
+                                </td>
+                                <td class="p-4 text-right"><button
+                                        class="text-secondary hover:text-yellow-600 font-medium text-xs">Assign</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

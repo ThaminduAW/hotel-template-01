@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Azure Horizon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f172a',
+                        secondary: '#cca43b',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-primary text-white shadow-lg transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-2">
+                <div
+                    class="w-10 h-10 bg-secondary text-primary flex items-center justify-center rounded-lg font-serif font-bold text-xl">
+                    AH</div>
+                <span class="text-2xl font-serif font-bold text-white tracking-wide">Azure Horizon</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="../index.html" class="text-slate-300 hover:text-white font-medium transition">Home</a>
+                <a href="rooms.html" class="text-slate-300 hover:text-white font-medium transition">Rooms</a>
+                <a href="gallery.html" class="text-white border-b-2 border-secondary font-medium transition">Gallery</a>
+                <a href="contact.html" class="text-slate-300 hover:text-white font-medium transition">Contact</a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none" id="mobile-menu-btn"><i
+                    class="fas fa-bars text-2xl"></i></button>
+        </div>
+        <div class="md:hidden hidden bg-primary absolute w-full" id="mobile-menu">
+            <div class="flex flex-col p-6 space-y-4">
+                <a href="../index.html" class="text-slate-300 hover:text-white font-medium">Home</a>
+                <a href="rooms.html" class="text-slate-300 hover:text-white font-medium">Rooms</a>
+                <a href="gallery.html" class="text-white font-medium">Gallery</a>
+                <a href="contact.html" class="text-slate-300 hover:text-white font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="pt-32 pb-16 bg-slate-100 text-center">
+        <div class="container mx-auto px-6">
+            <span class="text-secondary font-medium tracking-widest uppercase text-sm mb-2 block">Visual
+                Experience</span>
+            <h1 class="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">Our Gallery</h1>
+            <p class="text-slate-600 max-w-2xl mx-auto">Explore the beauty and elegance of Azure Horizon through our
+                lens.</p>
+        </div>
+    </header>
+
+    <!-- Filters -->
+    <div class="container mx-auto px-6 py-8 flex justify-center gap-4 flex-wrap">
+        <button
+            class="px-6 py-2 rounded-full bg-primary text-white text-sm font-medium shadow-lg transition transform hover:-translate-y-0.5 filter-btn active"
+            data-filter="all">All</button>
+        <button
+            class="px-6 py-2 rounded-full bg-white text-slate-600 border border-slate-200 text-sm font-medium hover:bg-slate-50 transition transform hover:-translate-y-0.5 filter-btn"
+            data-filter="rooms">Rooms</button>
+        <button
+            class="px-6 py-2 rounded-full bg-white text-slate-600 border border-slate-200 text-sm font-medium hover:bg-slate-50 transition transform hover:-translate-y-0.5 filter-btn"
+            data-filter="dining">Dining</button>
+        <button
+            class="px-6 py-2 rounded-full bg-white text-slate-600 border border-slate-200 text-sm font-medium hover:bg-slate-50 transition transform hover:-translate-y-0.5 filter-btn"
+            data-filter="exterior">Exterior</button>
+        <button
+            class="px-6 py-2 rounded-full bg-white text-slate-600 border border-slate-200 text-sm font-medium hover:bg-slate-50 transition transform hover:-translate-y-0.5 filter-btn"
+            data-filter="events">Events</button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="container mx-auto px-6 pb-24">
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4" id="gallery-grid">
+            <!-- Images populated (or static) -->
+            <!-- Image 1 -->
+            <div class="relative group overflow-hidden rounded-xl cursor-pointer gallery-item rooms"
+                onclick="openLightbox(this)">
+                <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=600&q=80"
+                    alt="Deluxe Suite"
+                    class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-700">
+                <div
+                    class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                    <i class="fas fa-search-plus text-white text-2xl"></i>
+                </div>
+            </div>
+            <!-- Image 2 -->
+            <div class="relative group overflow-hidden rounded-xl cursor-pointer gallery-item exterior"
+                onclick="openLightbox(this)">
+                <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80"
+                    alt="Exterior View"
+                    class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-700">
+                <div
+                    class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                    <i class="fas fa-search-plus text-white text-2xl"></i>
+                </div>
+            </div>
+            <!-- Image 3 -->
+            <div class="relative group overflow-hidden rounded-xl cursor-pointer gallery-item dining"
+                onclick="openLightbox(this)">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80"
+                    alt="Fine Dining"
+                    class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-700">
+                <div
+                    class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                    <i class="fas fa-search-plus text-white text-2xl"></i>
+                </div>
+            </div>
+            <!-- Image 4 -->
+            <div class="relative group overflow-hidden rounded-xl cursor-pointer gallery-item rooms"
+                onclick="openLightbox(this)">
+                <img src="https://images.unsplash.com/photo-1590490360182-c87295ecc039?auto=format&fit=crop&w=600&q=80"
+                    alt="Standard Room"
+                    class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-700">
+                <div
+                    class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                    <i class="fas fa-search-plus text-white text-2xl"></i>
+                </div>
+            </div>
+            <!-- Image 5 -->
+            <div class="relative group overflow-hidden rounded-xl cursor-pointer gallery-item events"
+                onclick="openLightbox(this)">
+                <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=600&q=80"
+                    alt="Wedding Hall"
+                    class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-700">
+                <div
+                    class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                    <i class="fas fa-search-plus text-white text-2xl"></i>
+                </div>
+            </div>
+            <!-- Image 6 -->
+            <div class="relative group overflow-hidden rounded-xl cursor-pointer gallery-item dining"
+                onclick="openLightbox(this)">
+                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=600&q=80"
+                    alt="Bar & Lounge"
+                    class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-700">
+                <div
+                    class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                    <i class="fas fa-search-plus text-white text-2xl"></i>
+                </div>
+            </div>
+            <!-- Image 7 -->
+            <div class="relative group overflow-hidden rounded-xl cursor-pointer gallery-item exterior"
+                onclick="openLightbox(this)">
+                <img src="https://images.unsplash.com/photo-1571896349842-6e53ce41be03?auto=format&fit=crop&w=600&q=80"
+                    alt="Poolside"
+                    class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-700">
+                <div
+                    class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                    <i class="fas fa-search-plus text-white text-2xl"></i>
+                </div>
+            </div>
+            <!-- Image 8 -->
+            <div class="relative group overflow-hidden rounded-xl cursor-pointer gallery-item rooms"
+                onclick="openLightbox(this)">
+                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80"
+                    alt="Suite Bathroom"
+                    class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-700">
+                <div
+                    class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                    <i class="fas fa-search-plus text-white text-2xl"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/90 hidden flex items-center justify-center p-4">
+        <button class="absolute top-4 right-4 text-white text-3xl hover:text-secondary focus:outline-none"
+            onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+        <div class="max-w-4xl max-h-screen overflow-hidden">
+            <img id="lightbox-img" src="" alt="Gallery Image" class="max-w-full max-h-[80vh] rounded-lg shadow-2xl">
+            <p id="lightbox-caption" class="text-white text-center mt-4 text-lg font-medium"></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-8 text-center text-sm">
+        <p>&copy; 2023 Azure Horizon Hotel.</p>
+    </footer>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+
+        function openLightbox(element) {
+            const img = element.querySelector('img');
+            lightboxImg.src = img.src.replace('w=600', 'w=1200'); // Higher text
+            lightboxCaption.innerText = img.alt;
+            lightbox.classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('hidden');
+        }
+
+        // Close on background click
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        // Filter Logic
+        const buttons = document.querySelectorAll('.filter-btn');
+        const items = document.querySelectorAll('.gallery-item');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Active State
+                buttons.forEach(b => {
+                    b.classList.remove('bg-primary', 'text-white');
+                    b.classList.add('bg-white', 'text-slate-600');
+                });
+                btn.classList.remove('bg-white', 'text-slate-600');
+                btn.classList.add('bg-primary', 'text-white');
+
+                const filter = btn.dataset.filter;
+                items.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.classList.remove('hidden');
+                        item.classList.add('animate-fade-in');
+                    } else {
+                        item.classList.add('hidden');
+                        item.classList.remove('animate-fade-in');
+                    }
+                });
+            });
+        });
+
+        // Basic Mobile Menu Toggle (Reused)
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileBtn) mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+
+</html>

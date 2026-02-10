@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms & Suites | Azure Horizon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f172a',
+                        secondary: '#cca43b',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- Navbar (Dark Version for inner pages) -->
+    <nav class="fixed w-full z-50 bg-primary text-white shadow-lg transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-2">
+                <div
+                    class="w-10 h-10 bg-secondary text-primary flex items-center justify-center rounded-lg font-serif font-bold text-xl">
+                    AH
+                </div>
+                <span class="text-2xl font-serif font-bold text-white tracking-wide">Azure Horizon</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="../index.html" class="text-slate-300 hover:text-secondary font-medium transition">Home</a>
+                <a href="rooms.html" class="text-white font-medium transition border-b-2 border-secondary">Rooms &
+                    Suites</a>
+                <a href="gallery.html" class="text-slate-300 hover:text-secondary font-medium transition">Gallery</a>
+                <a href="about.html" class="text-slate-300 hover:text-secondary font-medium transition">About</a>
+                <a href="contact.html" class="text-slate-300 hover:text-secondary font-medium transition">Contact</a>
+                <a href="booking.html"
+                    class="bg-secondary hover:bg-yellow-600 text-white px-6 py-2 rounded-full font-medium transition shadow-lg">
+                    Book Now
+                </a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none" id="mobile-menu-btn">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <div class="md:hidden hidden bg-primary border-t border-slate-700 absolute w-full" id="mobile-menu">
+            <div class="flex flex-col p-6 space-y-4">
+                <a href="../index.html" class="text-slate-300 hover:text-white font-medium">Home</a>
+                <a href="rooms.html" class="text-white hover:text-white font-medium">Rooms & Suites</a>
+                <a href="gallery.html" class="text-slate-300 hover:text-white font-medium">Gallery</a>
+                <a href="about.html" class="text-slate-300 hover:text-white font-medium">About</a>
+                <a href="contact.html" class="text-slate-300 hover:text-white font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="pt-32 pb-16 bg-slate-100 text-center relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <h1 class="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">Our Rooms & Suites</h1>
+            <p class="text-slate-600 max-w-2xl mx-auto">From cozy standard rooms to our luxurious presidential suites,
+                find the perfect space for your stay.</p>
+        </div>
+        <div
+            class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
+        </div>
+    </header>
+
+    <!-- Filters & Grid -->
+    <section class="py-12">
+        <div class="container mx-auto px-6">
+
+            <!-- Filter Bar -->
+            <div
+                class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mb-10 flex flex-col md:flex-row gap-6 items-center justify-between">
+                <div class="flex items-center gap-4 w-full md:w-auto">
+                    <span class="text-slate-500 font-medium">Filter by:</span>
+                    <select
+                        class="bg-slate-50 border border-slate-200 text-slate-700 text-sm rounded-lg focus:ring-secondary focus:border-secondary block w-full p-2.5">
+                        <option>All Room Types</option>
+                        <option>Standard</option>
+                        <option>Suite</option>
+                        <option>Deluxe</option>
+                    </select>
+                </div>
+                <div class="flex items-center gap-4 w-full md:w-auto">
+                    <span class="text-slate-500 font-medium">Sort by:</span>
+                    <select
+                        class="bg-slate-50 border border-slate-200 text-slate-700 text-sm rounded-lg focus:ring-secondary focus:border-secondary block w-full p-2.5">
+                        <option>Recommended</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Rooms Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="rooms-grid">
+                <!-- Populated by JS -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="flex justify-center mt-12">
+                <nav class="flex items-center gap-2">
+                    <button
+                        class="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 hover:bg-slate-50 text-slate-500 transition"><i
+                            class="fas fa-chevron-left"></i></button>
+                    <button
+                        class="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white font-medium shadow-md">1</button>
+                    <button
+                        class="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 hover:bg-slate-50 text-slate-500 transition">2</button>
+                    <button
+                        class="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 hover:bg-slate-50 text-slate-500 transition"><i
+                            class="fas fa-chevron-right"></i></button>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white pt-20 pb-10">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div class="md:col-span-1">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div
+                            class="w-8 h-8 bg-secondary text-primary flex items-center justify-center rounded font-serif font-bold">
+                            AH</div>
+                        <span class="text-xl font-serif font-bold">Azure Horizon</span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        A definitive destination for luxury and comfort.
+                    </p>
+                </div>
+                <!-- Links -->
+                <div>
+                    <h4 class="text-lg font-serif font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-slate-400 text-sm">
+                        <li><a href="about.html" class="hover:text-secondary transition">About Us</a></li>
+                        <li><a href="rooms.html" class="hover:text-secondary transition">Rooms & Suites</a></li>
+                        <li><a href="contact.html" class="hover:text-secondary transition">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 text-center text-slate-500 text-sm">
+                <p>&copy; 2023 Azure Horizon Hotel.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('rooms-grid');
+
+            // Generate some logical room cards (using hotelData or extending it)
+            // We'll create a mix of rooms for the display
+            const displayRooms = [
+                { title: "Standard King Room", price: 150, image: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800&q=80", features: ["King Bed", "City View", "Free Wi-Fi"] },
+                { title: "Deluxe Ocean Suite", price: 350, image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80", features: ["Ocean View", "Balcony", "Jacuzzi"] },
+                { title: "Family Garden Suite", price: 280, image: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&w=800&q=80", features: ["2 Queen Beds", "Garden View", "Kitchenette"] },
+                { title: "Presidential Penthouse", price: 950, image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800&q=80", features: ["Panoramic View", "Private Pool", "Butler Service"] },
+                { title: "Executive Corner Room", price: 220, image: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80", features: ["Workspace", "Lounge Access", "High Floor"] },
+                { title: "Standard Twin Room", price: 140, image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80", features: ["2 Twin Beds", "Courtyard View", "Rain Shower"] },
+            ];
+
+            displayRooms.forEach(room => {
+                const card = `
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition group border border-slate-100">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="${room.image}" alt="${room.title}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur text-primary px-3 py-1 rounded text-sm font-bold shadow-sm">
+                            $${room.price} <span class="text-xs font-normal text-slate-500">/ night</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary mb-2 font-serif">${room.title}</h3>
+                        <div class="flex items-center gap-4 mb-4 text-sm text-slate-500">
+                             ${room.features.map(f => `<span><i class="fas fa-check text-secondary mr-1"></i> ${f}</span>`).join('')}
+                        </div>
+                        <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+                            Experience the epitome of comfort in our ${room.title}, featuring modern amenities and elegant decor.
+                        </p>
+                        <div class="flex gap-3">
+                            <a href="booking.html" class="flex-1 bg-primary hover:bg-slate-800 text-white text-center py-3 rounded-lg font-medium transition">Book Now</a>
+                            <button class="w-12 h-12 flex items-center justify-center border border-slate-200 rounded-lg text-slate-400 hover:text-secondary hover:border-secondary transition"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                `;
+                grid.innerHTML += card;
+            });
+
+            // Basic Mobile Menu Toggle
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+    </script>
+</body>
+
+</html>
